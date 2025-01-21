@@ -1,0 +1,5 @@
+ติงตั้งไลบรารี PyCryptodome 
+-pip install pycryptodome
+
+ติดตั้งไลบรารี Matplotlib
+-pip install matplotlib
