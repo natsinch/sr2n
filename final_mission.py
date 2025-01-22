@@ -154,6 +154,6 @@ def final_task():
         return None, None
 
 # เรียกใช้งานฟังก์ชัน
-if __name__ == "__main__":
-    final_task()
+#if __name__ == "__main__":
+    #final_task()
 
