@@ -2,7 +2,7 @@ import time
 from aes_encryption import aes_task
 from rsa_encryption import rsa_task
 from hash_challenge import hash_task
-from final_mission import final_task
+from mission4.final_mission import final_task
 from utils import display_hacking_graphics, print_story
 
 # ฟังก์ชันที่ใช้ในการตรวจสอบผลลัพธ์ของแต่ละภารกิจ
@@ -17,16 +17,18 @@ def play_game():
     # บทนำเนื้อเรื่อง
     print("\n[บทนำ] เริ่มต้นภารกิจของคุณ...")
     print_story()
-    time.sleep(5)
+    time.sleep(3)
 
     # Mission 1: AES (หา KEY และ IV)
     print("\n[ภารกิจที่ 1: ถอดรหัส AES]")
     print("เป้าหมาย: ปลดล็อกชั้นแรกของระบบที่ถูกเข้ารหัสด้วย AES")
     print("ทดสอบทักษะการแฮ็กของคุณ!")
-    display_hacking_graphics()
+    time.sleep(3)
+    # เรียกฟังก์ชัน aes_task() และเก็บผลลัพธ์
+    aes_result = aes_task()
     
     # ตรวจสอบผลลัพธ์ของภารกิจ 1
-    if not aes_task():  
+    if not aes_result:  
         print("\n[ล้มเหลว] คุณไม่สามารถถอดรหัส AES ได้! ลองใหม่อีกครั้ง.")
         return  # หยุดเกมหากภารกิจแรกไม่สำเร็จ
 
@@ -37,7 +39,7 @@ def play_game():
     print("\n[ภารกิจที่ 2: ปลดล็อก RSA]")
     print("เป้าหมาย: ค้นหา Private Key ที่ซ่อนอยู่ในไฟล์ลับ และใช้มันเพื่อถอดรหัสข้อความสำคัญ")
     print("คอยระวังระบบรักษาความปลอดภัย...")
-    display_hacking_graphics()
+    time.sleep(3)
     
     # ตรวจสอบผลลัพธ์ของภารกิจ 2
     if not rsa_task():  
@@ -78,5 +80,6 @@ def play_game():
     print("\n[Crypto Heist: Mission Accomplished]")
     print("=" * 60)
 
-if __name__ == "__main__":
+# เรียกใช้งานฟังก์ชัน
+if _name_ == "_main_":
     play_game()

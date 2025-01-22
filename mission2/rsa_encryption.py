@@ -3,9 +3,7 @@ from Crypto.PublicKey import RSA
 from Crypto.Cipher import PKCS1_OAEP
 import os
 from utils import show_image
-
-# ข้อความที่เข้ารหัสด้วย RSA (ในรูปแบบ bytes)
-encrypted_message = base64.b64decode("4uKLgZ1q5YbZf7Y840lR45StyOG/4o9Y5HtVglfVWt8tZVi2evxeSlLuMT26lcC9hoo+k649PgvD00uOY7/7Kn8Lue2IYGTmPG7aoBPoZLDDTT2N1mQneSkuvyjyLZgWr5vRONJzk4Y/zp3/I7RUSuGWNgn6DEfMR+8eyTnN7eFuzvp2JGuNl05D8a8bcTOr3jQC+FeOPed9loD/YSUSK9LRJROTyipR2TAjKgHDYdcVleWiXHO5Y1JSr0iu0cPveEtUlNUoCnbM6Wp7wBihrizsW6GiZJ875YPZ3du+F0uQry9hcnnVdlY5qYa6hl3AfJzYR/MSml2MTTpBjEgGmA==")  # แทนค่าด้วยผลลัพธ์จากกระบวนการเข้ารหัส
+import time
 
 # ฟังก์ชันถอดรหัส RSA
 def rsa_decrypt(private_key, encrypted_message):
@@ -21,8 +19,7 @@ def rsa_decrypt(private_key, encrypted_message):
 # ฟังก์ชันเพื่อปลดล็อคไฟล์ (ใช้เลขจากคำใบ้)
 def unlock_file_using_hint(hint_number):
     locked_file_path = "locked_file_with_private_key.bin"
-# ตรวจสอบว่า hint_number ตรงกับคำตอบที่ถูกต้อง
-    if hint_number == 34:  # 34 คือคำตอบที่ถูกต้องจากคำใบ้
+    if hint_number == 34:  # คำตอบที่ถูกต้องจากคำใบ้
         if os.path.exists(locked_file_path):
             with open(locked_file_path, "rb") as file:
                 private_key = file.read()
@@ -36,32 +33,46 @@ def unlock_file_using_hint(hint_number):
 
 # ภารกิจที่ 2
 def rsa_task():
-    print("เนื้อเรื่อง")
-    show_image("images/hint2.jpg")
+    # เพิ่มเนื้อเรื่องของภารกิจ
+    print("=" * 60)
+    print("ภารกิจที่ 2: ปลดล็อกรหัส RSA")
+    print(
+        "หลังจากที่คุณผ่านระบบเข้ารหัส AES มาได้สำเร็จ คุณถูกนำตัวไปยังห้องที่มีระบบป้องกันข้อมูลแบบ RSA-2048\n"
+        "ระบบได้ทำการเข้ารหัสข้อมูลสำคัญ โดยแยกคีย์ส่วนตัวออกเป็นชิ้นส่วนและซ่อนอยู่ในเอกสารลับ.\n"
+        "คำใบ้ในภาพด้านล่างจะช่วยให้คุณค้นหา Private Key ได้.\n"
+        "เมื่อได้ Private Key มาแล้ว คุณจะต้องใช้เพื่อถอดรหัสข้อความที่ซ่อนอยู่.\n"
+    )
+    print("=" * 60)
+    show_image("images/hint2.jpg")  # แสดงภาพคำใบ้
+
     try:
-        # คำใบ้จากภาพให้ผู้เล่นได้เลข 2 ตัว
         hint_number = int(input("กรุณากรอกรหัสผ่านเพื่อปลดล็อคไฟล์ (ตัวเลข 2 ตัว): "))
 
-        # พยายามปลดล็อคไฟล์ด้วยเลขจากคำใบ้
         private_key = unlock_file_using_hint(hint_number)
 
         if private_key:
             print("\n[ปลดล็อคสำเร็จ!]")
+
             print("[Private Key ที่ปลดล็อคได้]:")
             print(private_key.decode())
-            
+
+            # อ่านข้อความที่เข้ารหัสจากไฟล์
+            with open("encrypted_message.txt", "r") as file:
+                encrypted_message = base64.b64decode(file.read())
+
             print("\n[ข้อความที่ถูกเข้ารหัส]:")
             print(base64.b64encode(encrypted_message).decode())
 
             # ให้ผู้เล่นใช้ Private Key เพื่อถอดรหัสข้อความ
-            print("\nกรุณาใช้ Private Key และข้อความที่ถูกเข้ารหัสข้างต้นเพื่อถอดรหัส")
-            print("หลังจากถอดรหัสได้แล้ว ให้ป้อนข้อความที่ถอดได้ด้านล่าง\n")
-
+            print(
+                "\nกรุณาใช้ Private Key และข้อความที่ถูกเข้ารหัสข้างต้นเพื่อถอดรหัส.\n"
+                "หลังจากถอดรหัสแล้ว ให้ป้อนข้อความที่คุณถอดได้."
+            )
             player_input = input("กรุณาป้อนข้อความที่ถอดรหัสได้: ").strip()
 
             # ถอดรหัสข้อความเพื่อตรวจสอบคำตอบ
             decrypted_message = rsa_decrypt(private_key, encrypted_message)
-            
+
             if player_input == decrypted_message:
                 print("\n[สำเร็จ!] คุณผ่านภารกิจที่ 2!")
             else:
