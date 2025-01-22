@@ -2,7 +2,7 @@ import time
 from aes_encryption import aes_task
 from rsa_encryption import rsa_task
 from hash_challenge import hash_task
-from mission4.final_mission import final_task
+from final_mission import final_task
 from utils import display_hacking_graphics, print_story
 
 # ฟังก์ชันที่ใช้ในการตรวจสอบผลลัพธ์ของแต่ละภารกิจ
