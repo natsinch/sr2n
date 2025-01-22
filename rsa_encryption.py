@@ -58,6 +58,7 @@ def rsa_task():
     # อ่านข้อความที่เข้ารหัส
     with open("encrypted_message.txt", "r") as file:
         encrypted_message = base64.b64decode(file.read())
+    time.sleep(2)
     print("\n[Encrypted message]:", base64.b64encode(encrypted_message).decode())
 
     # รับข้อความที่ถอดรหัสจากผู้ใช้

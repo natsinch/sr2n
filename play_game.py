@@ -114,7 +114,7 @@ def play_game():
     print("Congratulations! You successfully unlocked the banking system and stole the millions!")
     print("Your name will be etched in the legends of the cyber underground... The SR2N!")
     print("\n[Crypto Heist: Mission Accomplished]")
-    priint()
+    print()
     print("=" * 60)
 
 # เรียกใช้งานฟังก์ชัน
