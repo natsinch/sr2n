@@ -81,10 +81,12 @@ def aes_task():
         # คำใบ้สำหรับการหาค่า Key และ IV (จากภาพ)
         print("Hint: You can contact me without h")
         show_image("images/hint11.png")
+        print("Hint:UTF-8")
         key_input = input("Please enter the Key (16 bytes): ").encode('utf-8')  # ผู้เล่นกรอก Key
         
         print("Hint: Engineering student shirt colors")
         show_image("images/hint12.jpg") 
+        print("Hint:UTF-8")
         iv_input = input("Please enter the IV (16 bytes): ").encode('utf-8')    # ผู้เล่นกรอก IV
 
         # ถอดรหัสข้อความ
@@ -94,8 +96,12 @@ def aes_task():
             ##display_hacking_graphics()###
             print(f"It's correct,here you go: Key={key_input}, IV={iv_input}")
             #print(f"Decrypted message: {decrypted_text}")
-            print(f"Ciphertext = roF4bu09FX2WjJV5B6SqME344dYu9bZXjSKhe1oUGQg=")
+            time.sleep(2)
+            print("Find the password that has been encrypted using the provided KEY and IV!\n")
+            print("Hint: The encryption mode that links each data block together, think of each block referencing the previous block.\n")
+            print(f"This is encrypted message = roF4bu09FX2WjJV5B6SqME344dYu9bZXjSKhe1oUGQg=")
             passdecrypt=input("Please enter the decrypted message: ")
+
             if passdecrypt == expected_plaintext:
                 display_hacking_graphics()
                 print(f"Successfully! Decrypted message is: {passdecrypt}")
@@ -107,5 +113,5 @@ def aes_task():
         
 
 # เรียกใช้งานฟังก์ชัน
-aes_task()
+#aes_task()
 
