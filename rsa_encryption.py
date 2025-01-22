@@ -29,7 +29,7 @@ def unlock_file_using_hint(hint_number):
             print("ไม่พบไฟล์ที่ถูกล็อค!")
             return None
     else:
-        print("\nคำตอบไม่ถูกต้อง! ไม่สามารถปลดล็อคไฟล์ได้.\n")
+        print("\nIncorrect password! Unable to unlock the file.\n")
         return None
 
 # ภารกิจที่ 2
@@ -44,36 +44,36 @@ def rsa_task():
     # รับ input เพื่อปลดล็อคไฟล์
     while not private_key:
         try:
-            hint_number = int(input("กรุณากรอกรหัสผ่านเพื่อปลดล็อคไฟล์ (ตัวเลข 2 ตัว): "))
+            hint_number = int(input("Please enter the password to unlock the file. (Hint: Two digits): "))
             private_key = unlock_file_using_hint(hint_number)
             if not private_key:
-                print("[ล้มเหลว] กรุณาลองอีกครั้ง.")
+                print("[Failed] Please try again.")
         except ValueError:
-            print("[ล้มเหลว] กรุณากรอกตัวเลขที่ถูกต้อง!")
+            print("[Failed] Please enter the correct password!")
 
-    print("\n[ปลดล็อคสำเร็จ!] Private Key ที่ปลดล็อคได้:")
+    print("\n[Unlock successful!] Here is the data in the unlocked file:")
     time.sleep(2)
     print(private_key.decode())
     time.sleep(2)
     # อ่านข้อความที่เข้ารหัส
     with open("encrypted_message.txt", "r") as file:
         encrypted_message = base64.b64decode(file.read())
-    print("\n[ข้อความที่ถูกเข้ารหัส]:", base64.b64encode(encrypted_message).decode())
+    print("\n[Encrypted message]:", base64.b64encode(encrypted_message).decode())
 
     # รับข้อความที่ถอดรหัสจากผู้ใช้
     decrypted_message = rsa_decrypt(private_key, encrypted_message)
     if not decrypted_message:
-        print("[ล้มเหลว] การถอดรหัสผิดพลาด!")
+        print("[Failed] Decryption error!")
         return False
 
     while True:
-        player_input = input("กรุณาป้อนข้อความที่ถอดรหัสได้: ").strip()
+        player_input = input("Please enter the decrypted message: ").strip()
         if player_input == decrypted_message:
             display_hacking_graphics()
-            print("[สำเร็จ!] คุณผ่านภารกิจที่ 2!")
+            print("[Success!] You have completed Mission 2!")
             return True
         else:
-            print("[ล้มเหลว] ข้อความไม่ตรงกัน กรุณาลองอีกครั้ง.")
+            print("[Failed] The message does not match. Please try again.")
 
 # เรียกใช้งานฟังก์ชัน
 #if __name__ == "__main__":

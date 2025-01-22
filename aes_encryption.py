@@ -25,25 +25,26 @@ def aes_decrypt(key, iv, ciphertext):
 def aes_task():
     while True:
         # คำใบ้สำหรับการหาค่า Key และ IV (จากภาพ)
-        print("คำใบ้: You can contact me without h")
+        print("Hint: You can contact me without h")
         show_image("images/hint11.png")
-        key_input = input("กรุณาป้อน Key (16 bytes): ").encode('utf-8')  # ผู้เล่นกรอก Key
+        key_input = input("Please enter the Key (16 bytes): ").encode('utf-8')  # ผู้เล่นกรอก Key
         
-        print("คำใบ้: Engineering student shirt colors")
+        print("Hint: Engineering student shirt colors")
         show_image("images/hint12.jpg") 
-        iv_input = input("กรุณาป้อน IV (16 bytes): ").encode('utf-8')    # ผู้เล่นกรอก IV
+        iv_input = input("Please enter the IV (16 bytes): ").encode('utf-8')    # ผู้เล่นกรอก IV
 
         # ถอดรหัสข้อความ
         decrypted_text = aes_decrypt(key_input, iv_input, ciphertext)
 
         if decrypted_text == expected_plaintext:
             display_hacking_graphics()
-            print(f"คุณถอดรหัส AES ได้สำเร็จ: Key={key_input}, IV={iv_input}")
-            print(f"ข้อความที่ถอดรหัสได้: {decrypted_text}")
+            print(f"Successfully decrypted AES: Key={key_input}, IV={iv_input}")
+            print(f"Decrypted message: {decrypted_text}")
             return key_input, iv_input
         
         else:
-            print("\n[การแฮ็กล้มเหลว] ค่าที่ป้อนไม่ถูกต้อง! กรุณาลองอีกครั้ง.\n")
+            print("\n[Hack Failed] Incorrect inputs! Please try again.\n")
+
         
 
 # เรียกใช้งานฟังก์ชัน

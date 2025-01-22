@@ -7,19 +7,19 @@ hashed_password = hashlib.sha256("CPESUT".encode()).hexdigest()
 
 def hash_task():
     print("-" * 60)
-    print("คำใบ้: หาข้อความที่ซ่อนอยู่ในรูป")
+    print("Hint: Find the hidden message in the image")
     show_image("images/hashHint.png")
-    print("คุณต้องกรอกรหัสผ่านเพื่อไปยังภารกิจถัดไป!!")
+    print("You need to enter the password to proceed to the next mission!!")
     
     # รับค่าแฮชจากผู้ใช้
     while True:
-        user_hash = input("กรอกรหัสที่คิดว่าเป็นคำตอบ: ").strip()
+        user_hash = input("Enter the hash you think is the correct answer: ").strip()
         if user_hash == hashed_password:
             display_hacking_graphics()
-            print("ค่า hash ถูกต้อง! เข้าภารกิจถัดไป.")
+            print("The hash is correct! Proceeding to the next mission.")
             return True
         else:
-            print("ค่า hash ไม่ถูกต้อง! ลองใหม่อีกครั้ง.")
+            print("The hash is incorrect! Try again.")
 
 # เรียกใช้งานฟังก์ชัน
 #hash_task()

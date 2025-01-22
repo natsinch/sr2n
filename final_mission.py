@@ -25,47 +25,47 @@ def final_decrypt(key, iv, ciphertext):
 # ฟังก์ชันตรวจสอบขนาดของ Key และ IV
 def check_key_iv(key, iv):
     if len(key) != 16:
-        print(f"ข้อผิดพลาด: Key ต้องมีขนาด 16 bytes แต่มีขนาด {len(key)} bytes")
+        print(f"Error: Key must be 16 bytes, but it is {len(key)} bytes.")
         return False
     if len(iv) != 16:
-        print(f"ข้อผิดพลาด: IV ต้องมีขนาด 16 bytes แต่มีขนาด {len(iv)} bytes")
+        print(f"Error: IV must be 16 bytes, but it is {len(iv)} bytes.")
         return False
     return True
 
 def final_task():
     print("-" * 60)
-    print("เป้าหมายของคุณคือการเจาะระบบเพื่อถอดรหัสข้อความลับ และใช้ข้อมูลเพื่อโอนเงินออกจากธนาคาร.")
+    print("Your objective is to infiltrate the system, decrypt the secret message, and use the information to transfer funds from the bank.")
     
     while True:
-        print("[แสดงภาพคำใบ้ของ Key...]")
+        print("[Displaying hint for the Key...]")
         show_image("images/hint41.jpg")  # แสดงภาพคำใบ้แรก
-        key_input = input("🔑 กรุณาป้อน Key (16 bytes): ").encode('utf-8')
+        key_input = input("🔑 Please enter the Key (16 bytes): ").encode('utf-8')
         
-        print("[แสดงภาพคำใบ้ของ IV...]")
+        print("[Displaying hint for the IV...]]")
         show_image("images/hint42.jpg")  # แสดงภาพคำใบ้อีกครั้ง
-        iv_input = input("🗝️ กรุณาป้อน IV (16 bytes): ").encode('utf-8')
+        iv_input = input("🗝️ Please enter the IV (16 bytes): ").encode('utf-8')
 
         # ตรวจสอบขนาดของ Key และ IV
         if check_key_iv(key_input, iv_input):
             break  # หาก Key และ IV ถูกต้อง ออกจากลูป
-        print("❌ การแฮ็กล้มเหลว: Key หรือ IV ไม่ถูกต้อง! กรุณาลองใหม่.")
+        print("❌ Hack failed: Incorrect Key or IV! Please try again.")
 
     # ถอดรหัสข้อความ
     decrypted_text = final_decrypt(key_input, iv_input, ciphertext)
     
     # แสดงผลลัพธ์ที่ถอดรหัส
     if decrypted_text:
-        print(f"✅ ข้อความที่ถอดรหัสได้: {decrypted_text}")
+        print(f"✅ Decrypted message: {decrypted_text}")
         
     # เปรียบเทียบข้อความที่ถอดรหัสได้กับ expected_plaintext
     if decrypted_text == expected_plaintext:
         display_hacking_graphics()
-        print("💸 คุณสามารถเข้าถึงระบบธนาคารได้แล้ว!")
-        print(f"🎉 ใช้ Key: {key_input.decode('utf-8')} และ IV: {iv_input.decode('utf-8')} เพื่อโอนเงินออกจากระบบ.")
-        print("📄 ข้อมูลถูกบันทึกและโอนเงินสำเร็จ.")
+        print("💸 You have successfully accessed the bank system!")
+        print(f"🎉 Use Key: {key_input.decode('utf-8')} and IV: {iv_input.decode('utf-8')} to transfer funds from the system.")
+        print("📄 Data has been recorded, and the transfer was successful.")
         return key_input, iv_input
     else:
-        print("🚨 [การแฮ็กล้มเหลว!] ค่าที่ป้อนไม่ถูกต้อง.")
+        print("🚨 [Hack failed!] Incorrect inputs.")
         return None, None
 
 # เรียกใช้งานฟังก์ชัน
