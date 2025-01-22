@@ -51,7 +51,7 @@ def aes_task():
 #aes_task()
  """
 
-
+import time
 import base64
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
@@ -99,6 +99,7 @@ def aes_task():
             time.sleep(2)
             print("Find the password that has been encrypted using the provided KEY and IV!\n")
             print("Hint: The encryption mode that links each data block together, think of each block referencing the previous block.\n")
+            time.sleep(1)
             print(f"This is encrypted message = roF4bu09FX2WjJV5B6SqME344dYu9bZXjSKhe1oUGQg=")
             passdecrypt=input("Please enter the decrypted message: ")
 
