@@ -20,4 +20,3 @@ with open("encrypted_message.txt", "w") as file:
 
 print("ข้อความที่เข้ารหัสถูกสร้างและบันทึกแล้ว!")
 
-

@@ -14,6 +14,5 @@ with open("locked_file_with_private_key.bin", "wb") as file:
 print("ไฟล์ที่เก็บ Private Key ถูกสร้างเสร็จเรียบร้อยแล้ว!")
 
 with open("locked_file_with_public_key.bin", "wb") as file:
-    file.write(private_key)
+    file.write(public_key)
     print("ไฟล์ที่เก็บ Private Key ถูกสร้างเสร็จเรียบร้อยแล้ว!")
-
