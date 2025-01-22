@@ -44,14 +44,14 @@ def rsa_task():
     # รับ input เพื่อปลดล็อคไฟล์
     while not private_key:
         try:
-            hint_number = int(input("Please enter the password to unlock the file. (Hint: Two digits): "))
+            hint_number = int(input("🔐Please enter the password to unlock the file. (Hint: Two digits): "))
             private_key = unlock_file_using_hint(hint_number)
             if not private_key:
-                print("[Failed] Please try again.")
+                print("[Failed🚨] Please try again.")
         except ValueError:
-            print("[Failed] Please enter the correct password!")
+            print("[Failed🚨] Please enter the correct password!")
 
-    print("\n[Unlock successful!] Here is the data in the unlocked file:")
+    print("\n[🔓Unlock successful!] Here is the data in the unlocked file:")
     time.sleep(2)
     print(private_key.decode())
     time.sleep(2)
@@ -71,10 +71,10 @@ def rsa_task():
         player_input = input("Please enter the decrypted message: ").strip()
         if player_input == decrypted_message:
             display_hacking_graphics()
-            print("[Success!] You have completed Mission 2!")
+            print("[✅Success!] You have completed Mission 2!")
             return True
         else:
-            print("[Failed] The message does not match. Please try again.")
+            print("[⚠️Failed] The message does not match. Please try again.")
 
 # เรียกใช้งานฟังก์ชัน
 #if __name__ == "__main__":
