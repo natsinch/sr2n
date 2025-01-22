@@ -73,7 +73,7 @@ def final_task():
 #    final_task()
 
  """
-import time
+import time 
 import base64
 from Crypto.Cipher import AES
 from Crypto.Util.Padding import unpad
@@ -123,37 +123,37 @@ def final_task():
 
         # ตรวจสอบขนาดของ Key และ IV
         if check_key_iv(key_input, iv_input):
-            break  # หาก Key และ IV ถูกต้อง ออกจากลูป
-        print("❌ Hack failed: Incorrect Key or IV! Please try again.")
+            # ถอดรหัสข้อความ
+            decrypted_text = final_decrypt(key_input, iv_input, ciphertext)
+            
+            # เปรียบเทียบข้อความที่ถอดรหัสได้กับ expected_plaintext
+            if decrypted_text == expected_plaintext:
+                print("💸 You have successfully accessed the bank system!")
+                print(f"🎉 Use Key: {key_input.decode('utf-8')} and IV: {iv_input.decode('utf-8')} to transfer funds from the system.")
+                time.sleep(2)
+                print("Find the last password that has been encrypted to proceed successfully using the provided KEY and IV!\n")
+                print("Hint: The encryption mode that links each data block together, think of each block referencing the previous block.\n")
+                time.sleep(1)
+                print(f"This is encrypted password = ekzO2yNTve1jhLKWpBoebA==")
+                
+                # วนลูปจนกว่าผู้เล่นจะกรอกรหัสผ่านที่ถูกต้อง
+                while True:
+                    passdecrypt = input("Please enter the decrypted password: ")
+                    if passdecrypt == expected_plaintext:
+                        display_hacking_graphics()
+                        print(f"🎉 It's correct! The last password is: {passdecrypt}")
+                        print("📄 Data has been recorded, and the transfer was successful.")
+                        return key_input, iv_input, passdecrypt
+                    else:
+                        print("🚨 [Hack failed!] Incorrect decrypted password. Please try again.")
+                break  # ออกจากลูปหลักเมื่อถอดรหัสสำเร็จ
+            else:
+                print("🚨 [Hack failed!] Incorrect decrypted message. Please try again.")
+        else:
+            print("❌ Hack failed: Incorrect Key or IV! Please try again.")
 
-    # ถอดรหัสข้อความ
-    decrypted_text = final_decrypt(key_input, iv_input, ciphertext)
-    
-    # แสดงผลลัพธ์ที่ถอดรหัส
-    #if decrypted_text:
-        #print(f"✅ Decrypted message: {decrypted_text}")
-        
-    # เปรียบเทียบข้อความที่ถอดรหัสได้กับ expected_plaintext
-    if decrypted_text == expected_plaintext:
-        #display_hacking_graphics()
-        print("💸 You have successfully accessed the bank system!")
-        print(f"🎉 Use Key: {key_input.decode('utf-8')} and IV: {iv_input.decode('utf-8')} to transfer funds from the system.")
-        time.sleep(2)
-        print("Find the last password that has been encrypted to proceed successfully using the provided KEY and IV!\n")
-        print("Hint: The encryption mode that links each data block together, think of each block referencing the previous block.\n")
-        time.sleep(1)
-        print(f"This is encrypted password = ekzO2yNTve1jhLKWpBoebA==")
-        passdecrypt=input("Please enter the decrypted password: ")
-        if passdecrypt == expected_plaintext:
-                display_hacking_graphics()
-                print(f"🎉 It's correct! The lass password is: {passdecrypt}")
-        print("📄 Data has been recorded, and the transfer was successful.")
-        return key_input, iv_input, passdecrypt
-    else:
-        print("🚨 [Hack failed!] Incorrect inputs.")
-        return None, None
+    return None, None, None
 
 # เรียกใช้งานฟังก์ชัน
 #if __name__ == "__main__":
     #final_task()
-

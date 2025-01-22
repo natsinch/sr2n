@@ -94,25 +94,31 @@ def aes_task():
 
         if decrypted_text == expected_plaintext:
             ##display_hacking_graphics()###
-            print(f"It's correct,here you go: Key={key_input}, IV={iv_input}")
-            #print(f"Decrypted message: {decrypted_text}")
+            print(f"It's correct, here you go: Key={key_input}, IV={iv_input}")
+            # print(f"Decrypted message: {decrypted_text}")
             time.sleep(2)
             print("Find the password that has been encrypted using the provided KEY and IV!\n")
             print("Hint: The encryption mode that links each data block together, think of each block referencing the previous block.\n")
             time.sleep(1)
             print(f"This is encrypted message = roF4bu09FX2WjJV5B6SqME344dYu9bZXjSKhe1oUGQg=")
-            passdecrypt=input("Please enter the decrypted message: ")
 
-            if passdecrypt == expected_plaintext:
-                display_hacking_graphics()
-                print(f"Successfully! Decrypted message is: {passdecrypt}")
+            # วนลูปจนกว่าผู้เล่นจะกรอกรหัสผ่านที่ถูกต้อง
+            while True:
+                passdecrypt = input("Please enter the decrypted message: ")
+
+                if passdecrypt == expected_plaintext:
+                    display_hacking_graphics()
+                    print(f"Successfully! Decrypted message is: {passdecrypt}")
+                    break  # ออกจากลูปเมื่อกรอกรหัสผ่านถูกต้อง
+                else:
+                    print("\n[Hack Failed] Incorrect decrypted password! Please try again.\n")
+
             return key_input, iv_input, passdecrypt
         
         else:
             print("\n[Hack Failed] Incorrect inputs! Please try again.\n")
 
-        
-
 # เรียกใช้งานฟังก์ชัน
 #aes_task()
+
 
