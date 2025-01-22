@@ -41,9 +41,10 @@ def aes_task():
             print(f"คุณถอดรหัส AES ได้สำเร็จ: Key={key_input}, IV={iv_input}")
             print(f"ข้อความที่ถอดรหัสได้: {decrypted_text}")
             return key_input, iv_input
+        
         else:
             print("\n[การแฮ็กล้มเหลว] ค่าที่ป้อนไม่ถูกต้อง! กรุณาลองอีกครั้ง.\n")
-
+        
 
 # เรียกใช้งานฟังก์ชัน
 #aes_task()

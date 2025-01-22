@@ -23,6 +23,17 @@ def display_hacking_graphics():
         time.sleep(0.5)
     print("[แฮ็กสำเร็จ!]")
 
+import time
+
+def loading_animation(repeat_count=10):
+    loading_symbols = ['|', '/', '-', '\\']
+    for _ in range(repeat_count):  # จำนวนวนรอบตามที่ต้องการ
+        for symbol in loading_symbols:
+            print(f"\rกำลังโหลด {symbol}", end='', flush=True)
+            time.sleep(0.2)  # กำหนดเวลาหมุนแต่ละครั้ง
+    print("\rโหลดเสร็จสิ้น!")  # พิมพ์ข้อความเมื่อโหลดเสร็จ
+
+    
 def print_story():
     story = """
     ยินดีต้อนรับสู่ Crypto Heist!

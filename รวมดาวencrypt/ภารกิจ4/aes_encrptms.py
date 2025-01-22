@@ -23,3 +23,4 @@ with open("locked_file_with_aes.bin", "w") as file:
     file.write(encrypted_message)
 
 print("ไฟล์ที่เข้ารหัส AES ถูกสร้างเสร็จเรียบร้อยแล้ว!")
+
