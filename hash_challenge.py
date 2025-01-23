@@ -8,7 +8,7 @@ hashed_password = hashlib.sha256("CPESUT".encode()).hexdigest()
 def hash_task():
     print("-" * 60)
     print("Hint: Find the hidden message in the image")
-    show_image("images/hashHint.png")
+    show_image("images/hint3.png")
     print("You need to enter the password to proceed to the next mission!!")
     
     # รับค่าแฮชจากผู้ใช้
