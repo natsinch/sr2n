@@ -79,7 +79,7 @@ def aes_decrypt(key, iv, ciphertext):
 def aes_task():
     while True:
         # คำใบ้สำหรับการหาค่า Key และ IV (จากภาพ)
-        print("Hint: You can contact me without h")
+        print("Hint: Mr.P You can contact him without h")
         show_image("images/hint11.png")
         print("Hint:UTF-8")
         key_input = input("Please enter the Key (16 bytes): ").encode('utf-8')  # ผู้เล่นกรอก Key
