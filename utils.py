@@ -43,7 +43,7 @@ def print_story():
 
     Today, your mission has shifted from typical system hacks. This is about infiltrating the **most highly secured digital banking system** ever created. A system built by organizations with top-tier technology from governments and secret agencies worldwide.
 
-    You’ve been ordered by a secret group known as **The P**, who will have you steal millions of dollars from hidden accounts within this system. But it’s not as easy as it sounds. This system is protected by **AES**, **RSA**, and **SHA-256** encryption, presenting a serious challenge. You’ll need to use your best hacking techniques to break through.
+    You’ve been ordered by a secret group known as **The P**, who will have you steal millions of dollars from hidden accounts within this system. But it’s not as easy as it sounds. This system is protected by **AES-128**, **RSA-2048**, and **SHA-256** encryption, presenting a serious challenge. You’ll need to use your best hacking techniques to break through.
 
     **Your actions must be silent and swift**—there’s no time for mistakes. If you break the encryption incorrectly, the system will immediately activate its defense mechanisms, and everything will collapse around you.
 

@@ -69,6 +69,7 @@ def rsa_task():
 
     while True:
         player_input = input("Please enter the decrypted message: ").strip()
+        print("[Hint : The encoded message uses SHA-1 for padding.]")
         if player_input == decrypted_message:
             display_hacking_graphics()
             print("[✅Success!] You have completed Mission 2!")
